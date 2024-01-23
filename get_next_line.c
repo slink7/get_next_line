@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 20:40:22 by scambier          #+#    #+#             */
-/*   Updated: 2023/11/22 15:13:47 by scambier         ###   ########.fr       */
+/*   Updated: 2024/01/23 17:05:31 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,13 @@ void	ft_read(int fd, char **out)
 
 	if (!*out)
 		*out = ft_stralloc(1, 0);
+	if (has_char(*out, 10) != -1)
+		return ;
 	buffer = ft_stralloc(BUFFER_SIZE + 1, 0);
 	while (1)
 	{
-		ft_strnset(buffer, 0, BUFFER_SIZE);
 		read_len = read(fd, buffer, BUFFER_SIZE);
+		buffer[read_len] = 0;
 		if (read_len <= 0)
 		{
 			if (ft_strlen(*out) > 0)
