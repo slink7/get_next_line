@@ -6,7 +6,7 @@
 /*   By: scambier <scambier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 20:40:22 by scambier          #+#    #+#             */
-/*   Updated: 2024/01/23 17:05:31 by scambier         ###   ########.fr       */
+/*   Updated: 2024/02/06 14:34:12 by scambier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,7 @@ void	ft_read(int fd, char **out)
 			break ;
 		}
 		ft_strmcat(out, buffer);
-		if (read_len < BUFFER_SIZE)
-			break ;
-		if (has_char(*out, 10) != -1)
+		if (read_len < BUFFER_SIZE || has_char(*out, 10) != -1)
 			break ;
 	}
 	free(buffer);
